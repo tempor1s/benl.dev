@@ -1,21 +1,44 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled, { ThemeProvider } from 'styled-components';
+import GLOBE from 'vanta/dist/vanta.globe.min'
 
 import { Home } from './home/Home'
-import { theme, device } from '../utils/theme.util';
+import { theme } from '../utils/theme.util';
 import { GlobalStyle } from '../shared-styles/global.styles';
 
 const BaseContainer = styled.div`
     display: flex;
-    align-items: center;
-    justify-content: center;
     min-height: 100vh;
     background-color: #151515;
     color: white;
 `;
 
 export function App() {
+    const [vantaEffect, setVantaEffect] = useState(0);
     const ref = useRef(null);
+    
+    useEffect(() => {
+        if (!vantaEffect) {
+            setVantaEffect(
+                GLOBE({
+                    el: ref.current,
+                    mouseControls: false,
+                    touchControls: false,
+                    gyroControls: false,
+                    minHeight: 200.00,
+                    minWidth: 200.00,
+                    scale: 1.00,
+                    scaleMobile: 1.00,
+                    color: 0x2aff00,
+                    size: 1.10,
+                    backgroundColor: 0x0
+                })
+            )
+        }
+        return () => {
+            if (vantaEffect) vantaEffect.destroy()
+        }
+    }, [vantaEffect]);
     
     return (
         <ThemeProvider theme={theme}>
