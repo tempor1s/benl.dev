@@ -6,12 +6,17 @@ export const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-family: 'Poppins', sans-serif, Arial, Helvetica !important;
     }
+
     #root {
         overflow: hidden;
     }
-    button {
-        cursor: pointer;
-        border-top: none;
-        border: none;
+
+    html:before {
+        content: '';
+        position: fixed;
+        width: 100%;
+        height: 999px;
+        top: -999px;
+        background-color: #151515
     }
 `;

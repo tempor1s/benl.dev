@@ -30,8 +30,8 @@ export function App() {
                     scale: 1.00,
                     scaleMobile: 1.00,
                     color: 0x2aff00,
-                    size: 1.50,
-                    backgroundColor: 0x0
+                    size: 1.10,
+                    backgroundColor: 0x151515
                 })
             )
         }
